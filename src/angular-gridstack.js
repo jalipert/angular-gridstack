@@ -17,7 +17,7 @@
             return gridstack.remove_widget(element);
           }
           return null;
-        }
+        };
 
         this.addItem = function(element, x, y, width, height, auto) {
           if (gridstack) {

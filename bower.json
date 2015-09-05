@@ -6,7 +6,7 @@
     "Tropicalista <francescopepe@email.it>"
   ],
   "description": "Angular directive for gridstack.js",
-  "main": "angular-gridstack.js",
+  "main": "dist/angular-gridstack.min.js",
   "keywords": [
     "angular",
     "gridstack"
