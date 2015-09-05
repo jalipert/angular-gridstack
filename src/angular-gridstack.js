@@ -19,9 +19,9 @@
           return null;
         }
 
-        this.addItem = function(element, sizeX, sizeY, col, row) {
+        this.addItem = function(element, x, y, width, height, auto) {
           if (gridstack) {
-            return gridstack.add_widget(element, sizeX, sizeY, col, row, true);
+            return gridstack.add_widget(element, x, y, width, height, auto);
           }
           return null;
         };
@@ -55,7 +55,7 @@
           require: '^gridStack',
           scope: false,
           link: function (scope, element, attrs, controller) {
-              var widget = controller.addItem(element, attrs.gsX,attrs.gsY,attrs.gsWidth,attrs.gsHeight);
+              var widget = controller.addItem(element, attrs.gsX, attrs.gsY, attrs.gsWidth, attrs.gsHeight, scope.$eval(attrs.gsAutoPosition));
           }
 
       };
