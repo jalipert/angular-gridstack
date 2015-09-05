@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "homepage": "https://github.com/Tropicalista/angular-gridstack",
   "authors": [
-    "Tropicalista"
+    "Tropicalista <francescopepe@email.it>"
   ],
   "description": "Angular directive for gridstack.js",
   "main": "angular-gridstack.js",
