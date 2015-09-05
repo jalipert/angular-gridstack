@@ -1,0 +1,22 @@
+{
+  "name": "angular-gridstack",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Tropicalista/angular-gridstack",
+  "authors": [
+    "Tropicalista"
+  ],
+  "description": "Angular directive for gridstack.js",
+  "main": "angular-gridstack.js",
+  "keywords": [
+    "angular",
+    "gridstack"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
