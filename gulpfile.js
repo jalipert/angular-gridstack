@@ -6,6 +6,7 @@ var clean = require('gulp-clean');
 var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var header = require('gulp-header');
 
 var bases = {
  app: 'src/',
@@ -15,6 +16,15 @@ var bases = {
 var paths = {
  scripts: ['**/*.js']
 };
+
+var pkg = require('./package.json');
+var banner = ['/**',
+  ' * <%= pkg.name %> - <%= pkg.description %>',
+  ' * @version v<%= pkg.version %>',
+  ' * @link <%= pkg.homepage %>',
+  ' * @license <%= pkg.license %>',
+  ' */',
+  ''].join('\n');
 
 // Delete the dist directory
 gulp.task('clean', function() {
@@ -29,6 +39,7 @@ gulp.task('scripts', ['clean'], function() {
  .pipe(jshint.reporter('default'))
  .pipe(uglify())
  .pipe(concat('angular-gridstack.min.js'))
+ .pipe(header(banner, { pkg : pkg } ))
  .pipe(gulp.dest(bases.dist));
 });
 
