@@ -15,12 +15,6 @@
     <link rel="stylesheet" href="css/gridstack-extra.css"/>
 
     <style type="text/css">
-    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-      display: none !important;
-    }
-        a[ng-click]{
-            cursor: pointer;
-        }
         .grid1 {
             background: lightgoldenrodyellow;
         }
@@ -31,9 +25,8 @@
             background-color: #18bc9c;
         }
     </style>
-    <base href=""/>
 </head>
-<body ng-app="GridStack">
+<body ng-app="GridStack" ng-controller="DemoCtrl">
 
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -71,41 +64,29 @@
       </div><!-- /.container-fluid -->
     </nav>  
 
-    <div class="container-fluid"> 
-
+    <div class="container-fluid">
+ 
+        <p>{{widgets}} {{foo}}</p>
+        <div>
+            <a class="btn btn-primary" ng-click="addWidget()" href="#">Add Widget</a>
+        </div>
+        <br>
         <div class="row">
-
-            <div ng-view="" ng-cloak></div>
-
+            <div class="col-md-12">
+                <div class="grid-stack grid1" ng-model="widgets" grid-stack serialize="serialize()" options="options">
+                    <div class="grid-stack-item" 
+                        data-gs-x="{{w.x}}" data-gs-y="{{w.y}}" 
+                        data-gs-width="{{w.width}}" data-gs-height="{{w.height}}" data-gs-auto-position="{{w.auto}}" ng-repeat="w in widgets" gridstack-item="widget">
+                            <div class="grid-stack-item-content">
+                                <a class="btn btn-primary" ng-click="removeWidget(w)" href="#">remove widget</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
     </div>
-
-    <script type="text/ng-template" id="views/index.html">
-        <div class="col-md-12">
-            <h1>Home</h1>
-            <a href="#/dashboard">Go to dashboard</a>
-        </div>
-    </script>
-
-    <script type="text/ng-template" id="views/dashboard.html">
-        <p>{{widgets}} {{foo}}</p>
-        <div>
-            <a class="btn btn-primary" ng-click="addWidget()">Add Widget</a>
-        </div>
-        <div class="col-md-12">
-            <div class="grid-stack grid1" ng-model="widgets" grid-stack serialize="serialize()" options="options">
-                <div class="grid-stack-item" 
-                    data-gs-x="{{w.x}}" data-gs-y="{{w.y}}" 
-                    data-gs-width="{{w.width}}" data-gs-height="{{w.height}}" ng-repeat="w in widgets" gridstack-item="widget">
-                        <div class="grid-stack-item-content">
-                            <a class="btn btn-primary" ng-click="removeWidget(w)" href="#">remove widget</a>
-                        </div>
-                </div>
-            </div>
-        </div>
-    </script>
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -113,31 +94,13 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
     <script src="js/gridstack.js"></script>
     <script src="js/angular-gridstack.js"></script>
 
     <script type="text/javascript">
 
-        var app = angular.module('GridStack', ['ngRoute','ui.gridstack']).
-        config(['$routeProvider', '$locationProvider',
-            function($routeProvider, $locationProvider) {
-                $locationProvider.html5Mode(false), 
-                $routeProvider.when('/', {
-                    templateUrl: 'views/index.html',
-                    controller: 'HomeCtrl'
-                }).when('/dashboard', {
-                    templateUrl: 'views/dashboard.html',
-                    controller: 'DashboardCtrl'
-                }).otherwise({
-                    redirectTo: '/'
-                })
-            }
-        ]).
-        controller('HomeCtrl', function($scope) {
-
-        }).
-        controller('DashboardCtrl', function($scope) {
+        var app = angular.module('GridStack', ['ui.gridstack']).
+        controller('DemoCtrl', function($scope) {
 
             $scope.options = {
                 cell_height: 180,
@@ -147,7 +110,7 @@
             $scope.addWidget = function() {
                 var newItem =
                 {
-                  x: 0  , y: 0  , width: 1, height: 1
+                  x: 0  , y: 0  , width: 1, height: 1, auto:1
                 };
                 $scope.widgets.push(newItem);
             };
