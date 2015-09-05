@@ -21,7 +21,7 @@
 
         this.addItem = function(element, sizeX, sizeY, col, row) {
           if (gridstack) {
-            return gridstack.add_widget(element, sizeX, sizeY, col, row, false);
+            return gridstack.add_widget(element, sizeX, sizeY, col, row, true);
           }
           return null;
         };
