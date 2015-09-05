@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Angular demo</title>
+    <title>Angular gridstack demo</title>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/gridstack.css"/>
@@ -82,14 +82,12 @@
             };
 
             $scope.removeWidget = function(w) {
-                console.log(w)
                 var index = $scope.widgets.indexOf(w);
                 $scope.widgets.splice(index, 1);
                 $scope.serialize();
             };
 
           $scope.serialize = function(){
-            console.log('Widgets',$scope.widgets);
             var res = _.map($('.grid-stack .grid-stack-item:visible'), function (el) {
                 el = $(el);
                 var node = el.data('_gridstack_node');
