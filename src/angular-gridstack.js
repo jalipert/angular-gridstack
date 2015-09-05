@@ -7,7 +7,7 @@
       function($scope, $element, $attrs) {
 
         var gridstack = null;
-        $scope.init = function(element, options) {
+        this.init = function(element, options) {
           gridstack = element.gridstack(options).data('gridstack');
           return gridstack;
         };
@@ -21,7 +21,7 @@
 
         this.addItem = function(element, sizeX, sizeY, col, row) {
           if (gridstack) {
-            return gridstack.add_widget(element, sizeX, sizeY, col, row, false);
+            return gridstack.add_widget(element, sizeX, sizeY, col, row, true);
           }
           return null;
         };
@@ -38,7 +38,7 @@
           },
           link: function (scope, element, attrs, controller, ngModel) {
 
-              scope.init(element, scope.options);
+              controller.init(element, scope.options);
 
               element.on('change', function (e, items) {
                   scope.serialize();
