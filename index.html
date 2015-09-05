@@ -42,8 +42,7 @@
                         data-gs-width="{{w.width}}" data-gs-height="{{w.height}}" ng-repeat="w in widgets" gridstack-item="widget">
                             <div class="grid-stack-item-content">
                                 <ul>
-                                    <li>{{w.x}}</li>
-                                    <li><a class="btn btn-primary" ng-click="removeWidget(w)" href="#">x</a></li>
+                                    <a class="btn btn-primary" ng-click="removeWidget(w)" href="#">remove widget</a>
                                 </ul>
                             </div>
                     </div>
@@ -105,34 +104,6 @@
             $scope.widgets = [];
 
         });
-
-
-    /*app.controller('GridstackController', ['$scope', '$element', '$attrs',
-        function($scope, $element, $attrs) {
-
-          var gridstack = null;
-          $scope.init = function(element, options) {
-            gridstack = element.gridstack({}).data('gridstack');
-            return gridstack;
-          };
-
-          this.removeItem = function(element){
-            console.log('remove item',element)
-            if (gridstack) {
-              return gridstack.remove_widget(element);
-            }
-            return null;
-          }
-
-          this.addItem = function(element, sizeX, sizeY, col, row) {
-            console.log('add widget')
-            if (gridstack) {
-              return gridstack.add_widget(element, sizeX, sizeY, col, row, false);
-            }
-            return null;
-          };
-
-    }])*/
 
     </script>
 
