@@ -11,6 +11,13 @@
     "angular",
     "gridstack"
   ],
+  "dependencies": {
+    "angular": ">= 1.2.0",
+    "gridstack": "*",
+    "lodash": ">= 3.5.0",
+    "jquery": ">= 1.11.0",
+    "jquery-ui": ">= 1.11.0"
+  },  
   "license": "MIT",
   "ignore": [
     "**/.*",
