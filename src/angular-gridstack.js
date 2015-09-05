@@ -8,7 +8,6 @@
 
         var gridstack = null;
         $scope.init = function(element, options) {
-          console.log(options)
           gridstack = element.gridstack(options).data('gridstack');
           return gridstack;
         };
@@ -42,7 +41,6 @@
               scope.init(element, scope.options);
 
               element.on('change', function (e, items) {
-                  console.log('change')
                   scope.serialize();
               });
 

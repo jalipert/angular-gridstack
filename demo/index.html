@@ -41,10 +41,7 @@
                         data-gs-x="{{w.x}}" data-gs-y="{{w.y}}" 
                         data-gs-width="{{w.width}}" data-gs-height="{{w.height}}" ng-repeat="w in widgets" gridstack-item="widget">
                             <div class="grid-stack-item-content">
-                                <ul>
-                                    <li>{{w.x}}</li>
-                                    <li><a class="btn btn-primary" ng-click="removeWidget(w)" href="#">x</a></li>
-                                </ul>
+                                <a class="btn btn-primary" ng-click="removeWidget(w)" href="#">remove widget</a>
                             </div>
                     </div>
                 </div>
@@ -82,14 +79,12 @@
             };
 
             $scope.removeWidget = function(w) {
-                console.log(w)
                 var index = $scope.widgets.indexOf(w);
                 $scope.widgets.splice(index, 1);
                 $scope.serialize();
             };
 
           $scope.serialize = function(){
-            console.log('Widgets',$scope.widgets);
             var res = _.map($('.grid-stack .grid-stack-item:visible'), function (el) {
                 el = $(el);
                 var node = el.data('_gridstack_node');
