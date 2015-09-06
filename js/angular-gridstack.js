@@ -55,7 +55,9 @@
           require: '^gridStack',
           scope: false,
           link: function (scope, element, attrs, controller) {
-              var widget = controller.addItem(element, attrs.gsX,attrs.gsY,attrs.gsWidth,attrs.gsHeight, scope.$eval(attrs.gsAutoPosition));
+              attrs.$observe('gridstackItem', function(val) {
+                var widget = controller.addItem(element, attrs.gsX, attrs.gsY, attrs.gsWidth, attrs.gsHeight, scope.$eval(attrs.gsAutoPosition));
+              })
           }
 
       };
