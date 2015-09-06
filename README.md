@@ -7,3 +7,8 @@ gridstack.js is a jQuery plugin for widget layout. This is drag-and-drop multi-c
 draggable responsive bootstrap v3 friendly layouts. 
 
 See [live demo](http://tropicalista.github.io/angular-gridstack).
+
+Installation
+============
+
+	bower install --save angular-gridstack
