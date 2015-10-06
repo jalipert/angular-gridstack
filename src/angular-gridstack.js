@@ -33,6 +33,10 @@
           restrict: "A",
           controller: 'GridstackController',
           scope: {
+            dragStart: '&',
+            dragStop: '&',
+            resizeStart: '&',
+            resizeStop: '&',
             serialize: '&',
             options: '='
           },
@@ -43,7 +47,22 @@
               element.on('change', function (e, items) {
                   scope.serialize();
               });
+              
+              element.on('dragstart', function(e, ui) {
+                  scope.dragStart();
+              });
 
+              element.on('dragstop', function(e, ui) {
+                  scope.dragStop();
+              });
+
+              element.on('resizestart', function(e, ui) {
+                  scope.resizeStart(ui.element.children(':first').attr('id'));
+              });
+
+              element.on('resizestop', function(e, ui) {
+                  scope.resizeStop();
+              });
           }
       };
   }])
