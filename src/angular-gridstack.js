@@ -57,7 +57,7 @@
               });
 
               element.on('resizestart', function(e, ui) {
-                  scope.resizeStart(ui.element.children(':first').attr('id'));
+                  scope.resizeStart()(ui.element.children(':first').attr('id'));
               });
 
               element.on('resizestop', function(e, ui) {
